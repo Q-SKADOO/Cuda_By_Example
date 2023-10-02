@@ -159,7 +159,111 @@ int concurrentKernels;
 |`int concurrentKernels` |A boolean value representing whether the device supports executing multiple kernels within the same context simultaneously|
 
 Consult the NVIDIA CUDA Programming Guide for more information on the important details of these properties
-  
+
+```c
+#include "../common/book.h"
+int main( void ) {
+cudaDeviceProp prop;
+int count;
+HANDLE_ERROR( cudaGetDeviceCount( &count ) );
+for (int i=0; i< count; i++) {
+HANDLE_ERROR( cudaGetDeviceProperties( &prop, i ) );
+//Do something with our device's properties
+}
+}
+```
+
+This code is the beginning of our device query. 
+
+```c
+#include "../common/book.h"
+int main( void ) {
+cudaDeviceProp prop;
+int count;
+HANDLE_ERROR( cudaGetDeviceCount( &count ) );
+for (int i=0; i< count; i++) {
+HANDLE_ERROR( cudaGetDeviceProperties( &prop, i ) );
+printf( " --- General Information for device %d ---\n", i );
+printf( "Name: %s\n", prop.name );
+printf( "Compute capability: %d.%d\n", prop.major, prop.minor );
+printf( "Clock rate: %d\n", prop.clockRate );
+printf( "Device copy overlap: " );
+if (prop.deviceOverlap)
+printf( "Enabled\n" );
+else
+printf( "Disabled\n" );
+printf( "Kernel execition timeout : " );
+if (prop.kernelExecTimeoutEnabled)
+printf( "Enabled\n" );
+else
+printf( "Disabled\n" );
+printf( " --- Memory Information for device %d ---\n", i );
+printf( "Total global mem: %ld\n", prop.totalGlobalMem );
+printf( "Total constant Mem: %ld\n", prop.totalConstMem );
+printf( "Max mem pitch: %ld\n", prop.memPitch );
+printf( "Texture Alignment: %ld\n", prop.textureAlignment );
+printf( " --- MP Information for device %d ---\n", i );
+printf( "Multiprocessor count: %d\n",
+prop.multiProcessorCount );
+printf( "Shared mem per mp: %ld\n", prop.sharedMemPerBlock );
+printf( "Registers per mp: %d\n", prop.regsPerBlock );
+printf( "Threads in warp: %d\n", prop.warpSize );
+printf( "Max threads per block: %d\n",
+prop.maxThreadsPerBlock );
+printf( "Max thread dimensions: (%d, %d, %d)\n",
+prop.maxThreadsDim[0], prop.maxThreadsDim[1],
+prop.maxThreadsDim[2] );
+printf( "Max grid dimensions: (%d, %d, %d)\n",
+prop.maxGridSize[0], prop.maxGridSize[1],
+prop.maxGridSize[2] );
+printf( "\n" );
+}
+}
+```
+
+Expand code to print the device properties
+
+## Using Device Properties
+Why would be be interested in device properties?
+
+1) We would want to run our software on specific GPUs such as one with the  most multiprocessors or dprcific compute capabilities.
+2) If the kernel needs close interaction with the CPU, we use the integrated GPU that shares system memory with CPU.
+
+Would utilize cudaGetDeviceProperties()
+
+or need double-precision floating -point support, we would need a device with compute capabilitiy of 1.3 or higher.
+
+```c
+cudaDeviceProp prop;
+memset( &prop, 0, sizeof( cudaDeviceProp ) );
+prop.major = 1;
+prop.minor = 3;
+```
+
+This piece of code fills the cudaDeviceProp structure with the properties that we need the device to have.
+
+Then it has to be passed to cudaChooseDevice() to have the CUDA runtime find a device that satisfies these constraints.
+The call cudaChooseDevice() returns a device ID. We then pass to cudaSetDevice() which sets our device and from there all device operations will take place on that device found in cudaChooseDevice().
+
+```c
+#include "../common/book.h"
+int main( void ) {
+cudaDeviceProp prop;
+int dev;
+HANDLE_ERROR( cudaGetDevice( &dev ) );
+printf( "ID of current CUDA device: %d\n", dev );
+memset( &prop, 0, sizeof( cudaDeviceProp ) );
+prop.major = 1;
+prop.minor = 3;
+HANDLE_ERROR( cudaChooseDevice( &dev, &prop ) );
+printf( "ID of CUDA device closest to revision 1.3: %d\n", dev );
+HANDLE_ERROR( cudaSetDevice( dev ) );
+}
+```
+
+SInce our application may depend on certain features of the GPU or needs the fastest GPU or a GPU with an higher affinity to the host then we need to be familiar with this APU since ther is no guarantee that the CUDA runtime will choose the best or most appropriate GPU for our app.
+
+
 ## Key Terms:
 host: CPU and its system memory
 device: GPU and its memory
