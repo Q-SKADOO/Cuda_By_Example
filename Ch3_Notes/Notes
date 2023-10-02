@@ -16,7 +16,7 @@ Sections
 
 First Program - Hello World
 
-``` C
+```c
 #include "../common/book.h"
 int main( void ) {
 printf( "Hello, World!\n" );
