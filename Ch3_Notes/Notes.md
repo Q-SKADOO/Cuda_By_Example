@@ -265,16 +265,16 @@ SInce our application may depend on certain features of the GPU or needs the fas
 
 
 ## Key Terms:
-host: CPU and its system memory
-device: GPU and its memory
-kernel: function that executes on the device
-cudaMalloc(): allocation of memory. Tells CUDA runtime to allocate the memory on the device
-pointer: Holds the address of the newly allocated memory
-HANDLE_ERROR(): utility macro that detects that the call has returned an error, prints the associated error message, and exits the application with an EXIT_FAILURE code. (Highly likely to be insufficient in production code)
-cudaMemcoy(): call to access memory on a device.
-cudaMemcpyDeviceToHost: parameter in cudaMemcpy() instructing runtime that the source pointer is a device pointer and the destinationpointer is a host pointer.
-cudaMemcpyHostToDevice: parameter in cudaMemcpy() instructing runtime that the source data is on the host and the destination is an address on the device.
-cudaMemcpyDeviceToDevice: specifies that both pointers are on the device
-memcpy(): would be used if bother pointers were on host
-cudaGetDeviceCount(): call to get the count of CUDA devices
-cudaDeviceProp: structure type returned when cudaGetDeviceCOunt() is called
+* host: CPU and its system memory
+* device: GPU and its memory
+* kernel: function that executes on the device
+* cudaMalloc(): allocation of memory. Tells CUDA runtime to allocate the memory on the device
+* pointer: Holds the address of the newly allocated memory
+* HANDLE_ERROR(): utility macro that detects that the call has returned an error, prints the associated error message, and exits the application with an EXIT_FAILURE code. (Highly likely to be insufficient in production code)
+* cudaMemcoy(): call to access memory on a device.
+* cudaMemcpyDeviceToHost: parameter in cudaMemcpy() instructing runtime that the source pointer is a device pointer and the destinationpointer is a host pointer.
+* cudaMemcpyHostToDevice: parameter in cudaMemcpy() instructing runtime that the source data is on the host and the destination is an address on the device.
+* cudaMemcpyDeviceToDevice: specifies that both pointers are on the device
+* memcpy(): would be used if bother pointers were on host
+* cudaGetDeviceCount(): call to get the count of CUDA devices
+* cudaDeviceProp: structure type returned when cudaGetDeviceCOunt() is called
