@@ -133,30 +133,30 @@ int concurrentKernels;
 
 |DEvICE ProPErty | Description |
 |---|---|
-|'char name[256];' | An ASCII string identifying the device (e.g., "GeForce GTX 280")|
-|'size_t totalGlobalMem' | The amount of global memory on the device in bytes|
-|'size_t sharedMemPerBlock' | The maximum amount of shared memory a single block may use in bytes|
-|'int regsPerBlock' | The number of 32-bit registers available per block|
-|'int warpSize' | The number of threads in a warp|
-|'size_t memPitch' | The maximum pitch allowed for memory copies in bytes|
-|'int maxThreadsPerBlock' | The maximum number of threads that a block may contain|
-|'int maxThreadsDim[3]' |The maximum number of threads allowed along each dimension of a block|
-|'int maxGridSize[3]' |The number of blocks allowed along each dimension of a grid|
-|'size_t totalConstMem' |The amount of available constant memory|
-|'int major' | The major revision of the device’s compute capability|
-|'int minor' |The minor revision of the device’s compute capability|
-|'size_t textureAlignment' |The device’s requirement for texture alignment|
-|'int deviceOverlap' | A boolean value representing whether the device can simultaneously perform a cudaMemcpy() and kernel execution|
-|'int multiProcessorCount' |The number of multiprocessors on the device|
-|'int kernelExecTimeoutEnabled' | A boolean value representing whether there is a runtime limit for kernels executed on this device|
-|'int integrated' |A boolean value representing whether the device is an integrated GPU (i.e., part of the chipset and not a discrete GPU)|
-|'int canMapHostMemory' | A boolean value representing whether the device can map host memory into the CUDA device address space|
-|'int computeMode' |A value representing the device’s computing mode: default, exclusive, or prohibited|
-|'int maxTexture1D' |The maximum size supported for 1D textures|
-|'int maxTexture2D[2]' |The maximum dimensions supported for 2D textures|
-|'int maxTexture3D[3]' | The maximum dimensions supported for 3D textures|
-|'int maxTexture2DArray[3]' |The maximum dimensions supported for 2D texture arrays|
-|'int concurrentKernels' |A boolean value representing whether the device supports executing multiple kernels within the same context simultaneously|
+|`char name[256];` | An ASCII string identifying the device (e.g., "GeForce GTX 280")|
+|`size_t totalGlobalMem` | The amount of global memory on the device in bytes|
+|`size_t sharedMemPerBlock` | The maximum amount of shared memory a single block may use in bytes|
+|`int regsPerBlock` | The number of 32-bit registers available per block|
+|`int warpSize` | The number of threads in a warp|
+|`size_t memPitch` | The maximum pitch allowed for memory copies in bytes|
+|`int maxThreadsPerBlock` | The maximum number of threads that a block may contain|
+|`int maxThreadsDim[3]` |The maximum number of threads allowed along each dimension of a block|
+|`int maxGridSize[3]` |The number of blocks allowed along each dimension of a grid|
+|`size_t totalConstMem` |The amount of available constant memory|
+|`int major` | The major revision of the device’s compute capability|
+|`int minor` |The minor revision of the device’s compute capability|
+|`size_t textureAlignment` |The device’s requirement for texture alignment|
+|`int deviceOverlap` | A boolean value representing whether the device can simultaneously perform a cudaMemcpy() and kernel execution|
+|`int multiProcessorCount` |The number of multiprocessors on the device|
+|`int kernelExecTimeoutEnabled` | A boolean value representing whether there is a runtime limit for kernels executed on this device|
+|`int integrated` |A boolean value representing whether the device is an integrated GPU (i.e., part of the chipset and not a discrete GPU)|
+|`int canMapHostMemory` | A boolean value representing whether the device can map host memory into the CUDA device address space|
+|`int computeMode` |A value representing the device’s computing mode: default, exclusive, or prohibited|
+|`int maxTexture1D` |The maximum size supported for 1D textures|
+|`int maxTexture2D[2]` |The maximum dimensions supported for 2D textures|
+|`int maxTexture3D[3]` | The maximum dimensions supported for 3D textures|
+|`int maxTexture2DArray[3]` |The maximum dimensions supported for 2D texture arrays|
+|`int concurrentKernels` |A boolean value representing whether the device supports executing multiple kernels within the same context simultaneously|
 
 Consult the NVIDIA CUDA Programming Guide for more information on the important details of these properties
   
