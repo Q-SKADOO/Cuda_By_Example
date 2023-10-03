@@ -43,9 +43,9 @@ int main( void ) {
 * An empty function named kernel() qualified with __global__
 * A call to the empty function, embellished with <<<1,1>>>
 
-__global__ tells the compiler that a function should be compiled to run on a device instead of host.\
-So nvcc would give the function lkernel() to the compiler that handles device code and give main() to host compiler\
-The angle brackets denote arguments planned to pass to the runtime system, influence how the runtime will launch our device code\
+__global__ tells the compiler that a function should be compiled to run on a device instead of host.  
+So nvcc would give the function lkernel() to the compiler that handles device code and give main() to host compiler  
+The angle brackets denote arguments planned to pass to the runtime system, influence how the runtime will launch our device code  
 The arguements inside the parentheses get passed to the device code
 
 ## Passing Parameters
