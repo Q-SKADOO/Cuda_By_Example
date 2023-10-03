@@ -10,7 +10,7 @@
 3.2 A First Program\ 
 3.3 Querying Devices\ 
 3.4 Using Device Properties\  
-3.5 Chapter Review\
+3.5 Chapter Review
 
 
 # 3.2:
@@ -46,7 +46,7 @@ int main( void ) {
 __global__ tells the compiler that a function should be compiled to run on a device instead of host.\
 So nvcc would give the function lkernel() to the compiler that handles device code and give main() to host compiler\
 The angle brackets denote arguments planned to pass to the runtime system, influence how the runtime will launch our device code\
-The arguements inside the parentheses get passed to the device code\
+The arguements inside the parentheses get passed to the device code
 
 ## Passing Parameters
 
