@@ -76,9 +76,14 @@ The 1st core adds up the even-indexed elements while the second core adds the od
 
 This amounts to executing the following code on each of the two CPU cores:  
 
-|CPU Core 1 | CPU Core 2|
-|---|---|
-|```c
+<table>
+<tr>
+<td> CPU Core 1 </td> <td> CPU Core 2 </td>
+</tr>
+<tr>
+<td>
+
+```c
 void add( int *a, int *b, int *c )
 {
 int tid = 0;
@@ -87,7 +92,12 @@ c[tid] = a[tid] + b[tid];
 tid += 2;
 }
 }
-```| ```c
+```
+
+</td>
+<td>
+    
+```c
 void add( int *a, int *b, int *c )
 {
 int tid = 1;
@@ -96,8 +106,10 @@ c[tid] = a[tid] + b[tid];
 tid += 2;
 }
 }
-```|
-
+```
+</td>
+</tr>
+</table>
 
 
 
