@@ -7,9 +7,9 @@
 
 
 # Sections
-3.2 A First Program\ 
-3.3 Querying Devices\ 
-3.4 Using Device Properties\  
+3.2 A First Program  
+3.3 Querying Devices   
+3.4 Using Device Properties    
 3.5 Chapter Review
 
 
