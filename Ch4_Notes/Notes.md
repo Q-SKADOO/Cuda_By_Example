@@ -5,6 +5,10 @@
 
 
 # Sections
-4.2 CUDA Parallel Programming
+4.2 CUDA Parallel Programming  
 4.3 Chapter Review
+
+## Summing Vectors
+
+
 
