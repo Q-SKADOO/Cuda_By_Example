@@ -43,10 +43,10 @@ int main( void ) {
 * An empty function named kernel() qualified with __global__
 * A call to the empty function, embellished with <<<1,1>>>
 
-__global__ tells the compiler that a function should be compiled to run on a device instead of host.
-So nvcc would give the function lkernel() to the compiler that handles device code and give main() to host compiler
-The angle brackets denote arguments planned to pass to the runtime system, influence how the runtime will launch our device code
-The arguements inside the parentheses get passed to the device code
+__global__ tells the compiler that a function should be compiled to run on a device instead of host.\
+So nvcc would give the function lkernel() to the compiler that handles device code and give main() to host compiler\
+The angle brackets denote arguments planned to pass to the runtime system, influence how the runtime will launch our device code\
+The arguements inside the parentheses get passed to the device code\
 
 ## Passing Parameters
 
@@ -242,7 +242,7 @@ prop.minor = 3;
 
 This piece of code fills the cudaDeviceProp structure with the properties that we need the device to have.
 
-Then it has to be passed to cudaChooseDevice() to have the CUDA runtime find a device that satisfies these constraints.
+Then it has to be passed to cudaChooseDevice() to have the CUDA runtime find a device that satisfies these constraints.\
 The call cudaChooseDevice() returns a device ID. We then pass to cudaSetDevice() which sets our device and from there all device operations will take place on that device found in cudaChooseDevice().
 
 ```c
@@ -261,7 +261,7 @@ HANDLE_ERROR( cudaSetDevice( dev ) );
 }
 ```
 
-SInce our application may depend on certain features of the GPU or needs the fastest GPU or a GPU with an higher affinity to the host then we need to be familiar with this APU since ther is no guarantee that the CUDA runtime will choose the best or most appropriate GPU for our app.
+Since our application may depend on certain features of the GPU or needs the fastest GPU or a GPU with an higher affinity to the host then we need to be familiar with this APU since ther is no guarantee that the CUDA runtime will choose the best or most appropriate GPU for our app.
 
 
 ## Key Terms:
@@ -271,7 +271,7 @@ SInce our application may depend on certain features of the GPU or needs the fas
 * cudaMalloc(): allocation of memory. Tells CUDA runtime to allocate the memory on the device
 * pointer: Holds the address of the newly allocated memory
 * HANDLE_ERROR(): utility macro that detects that the call has returned an error, prints the associated error message, and exits the application with an EXIT_FAILURE code. (Highly likely to be insufficient in production code)
-* cudaMemcoy(): call to access memory on a device.
+* cudaMemcpy(): call to access memory on a device.
 * cudaMemcpyDeviceToHost: parameter in cudaMemcpy() instructing runtime that the source pointer is a device pointer and the destinationpointer is a host pointer.
 * cudaMemcpyHostToDevice: parameter in cudaMemcpy() instructing runtime that the source data is on the host and the destination is an address on the device.
 * cudaMemcpyDeviceToDevice: specifies that both pointers are on the device
